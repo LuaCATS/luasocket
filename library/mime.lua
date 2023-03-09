@@ -1,7 +1,6 @@
 ---@meta
 
---- https://lunarmodules.github.io/luasocket/mime.html
----https://github.com/TeX-Live/luatex/blob/trunk/source/texk/web2c/luatexdir/luasocket/src/mime.lua
+---https://lunarmodules.github.io/luasocket/mime.html
 ---
 ---The `mime` namespace offers filters that apply and remove common
 ---content transfer encodings, such as Base64 and Quoted-Printable.

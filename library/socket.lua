@@ -1,10 +1,8 @@
 ---@meta
----`luasocket`, by Diego Nehab http://w3.impa.br/diego/software/luasocket/. The `.lua` support
----modules from `luasocket` are also preloaded inside the executable,
----there are no external file dependencies.
----https://github.com/lunarmodules/luasocket
+
+---
 ---https://lunarmodules.github.io/luasocket/socket.html
----https://github.com/TeX-Live/luatex/blob/trunk/source/texk/web2c/luatexdir/luasocket/src/socket.lua
+---
 ---The socket namespace
 ---
 ---The `socket` namespace contains the core functionality of LuaSocket.
@@ -170,8 +168,6 @@ function socket.newtry(finalizer) end
 function socket.protect(func) end
 
 ---
-
----
 ---Waits for a number of sockets to change status.
 ---
 --- `Recvt` and `sendt` can also
@@ -218,11 +214,8 @@ function socket.protect(func) end
 ---function to block indefinitely.
 function socket.select(recvt, sendt, timeout) end
 
-function socket.try() end
-
-function socket.__unload() end
-
-function socket.choose() end
+--- The maximum number of sockets that the select function can handle.
+socket._SETSIZE = 0
 
 function socket.sink() end
 
@@ -232,16 +225,14 @@ function socket.sleep() end
 
 function socket.source() end
 
-function socket.tcp() end
+socket._SOCKETINVALID = nil
 
-function socket.tcp4() end
+function socket.try() end
 
-function socket.tcp6() end
+function socket.__unload() end
 
-function socket.udp() end
+function socket.choose() end
 
-function socket.udp4() end
-
-function socket.udp6() end
+socket._VERSION = ''
 
 return socket

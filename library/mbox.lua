@@ -1,4 +1,7 @@
 ---@meta
+
+---
+---https://github.com/lunarmodules/luasocket/blob/master/src/mbox.lua
 local mbox = {}
 
 ---
