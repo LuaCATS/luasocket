@@ -215,24 +215,117 @@ function socket.protect(func) end
 function socket.select(recvt, sendt, timeout) end
 
 --- The maximum number of sockets that the select function can handle.
+---@type integer
 socket._SETSIZE = 0
 
-function socket.sink() end
+---
+---Creates an
+---LTN12
+---sink from a stream socket object.
+---
+---`Mode` defines the behavior of the sink. The following
+---options are available:
+---
+---* `"http-chunked"`: sends data through socket after applying the
+---chunked transfer coding, closing the socket when done;
+---* `"close-when-done"`: sends all received data through the
+---socket, closing the socket when done;
+---* `"keep-open"`: sends all received data through the
+---socket, leaving it open when done.
+---
+---`Socket` is the stream socket object used to send the data.
+---
+---The function returns a sink with the appropriate behavior.
+---
+---@param mode 'http-chunked'|'close-when-done'|'keep-open'
+---@param socket any
+function socket.sink(mode, socket) end
 
-function socket.skip() end
+---
+---Drops a number of arguments and returns the remaining.
+---
+---`D` is the number of arguments to drop. `Ret1` to
+---`retN` are the arguments.
+---
+---The function returns `retd+1` to `retN`.
+---
+---Note: This function is useful to avoid creation of dummy variables:
+---
+---
+---```
+----- get the status code and separator from SMTP server reply
+---local code, sep = socket.skip(2, string.find(line, "^(%d%d%d)(.?)"))
+---```
+---
+---@param d integer
+---@param ... any
+function socket.skip(d, ...) end
 
-function socket.sleep() end
+---
+---Freezes the program execution during a given amount of time.
+---
+---`Time` is the number of seconds to sleep for. If
+---`time` is negative, the function returns immediately.
+---
+---@param time integer
+function socket.sleep(time) end
 
-function socket.source() end
+---
+---Creates an
+---LTN12
+---source from a stream socket object.
+---
+---`Mode` defines the behavior of the source. The following
+---options are available:
+---
+---* `"http-chunked"`: receives data from socket and removes the
+---chunked transfer codingbefore returning the data;
+---* `"by-length"`: receives a fixed number of bytes from the
+---socket. This mode requires the extra argument `length`;
+---* `"until-closed"`: receives data from a socket until the other
+---side closes the connection.
+---
+---`Socket` is the stream socket object used to receive the data.
+---
+---The function returns a source with the appropriate behavior.
+---
+---@param mode 'http-chunked'|'by-length'|'until-closed'
+---@param socket any
+---@param timeout integer
+function socket.source(mode, socket, timeout) end
 
+---The OS value for an invalid socket. This can be used with
+---`tcp:getfd`and `tcp:setfd`methods.
+---@type any
 socket._SOCKETINVALID = nil
 
-function socket.try() end
+---
+---
+---Throws an exception in case `ret1` is falsy, using
+---`ret2` as the error message. The exception is supposed to be caught
+---by a `protect`ed function only.
+---
+---`Ret1` to `retN` can be arbitrary
+---arguments, but are usually the return values of a function call
+---nested with `try`.
+---
+---The function returns `ret`1 to `ret`N if
+---`ret`1 is not `nil` or `false`.
+---Otherwise, it calls `error` passing `ret`2 wrapped
+---in a table with metatable used by `protect`to
+---distinguish exceptions from runtime errors.
+---
+---```lua
+----- connects or throws an exception with the appropriate error message
+---c = socket.try(socket.connect("localhost", 80))
+---```
+---
+---@param ... any
+function socket.try(...) end
 
-function socket.__unload() end
-
-function socket.choose() end
-
+---
+---This constant has a string describing the current LuaSocket version.
+---@type string
 socket._VERSION = ''
 
 return socket

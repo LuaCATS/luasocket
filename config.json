@@ -1,3 +1,7 @@
 {
-  "words": ["require[%s%(\"']+socket[%)\"']"]
+  "words": [
+    "require[%s%(\"']+socket[%)\"']",
+    "require[%s%(\"']+mime[%)\"']",
+    "require[%s%(\"']+mbox[%)\"']"
+  ]
 }
