@@ -326,6 +326,6 @@ function socket.try(...) end
 ---
 ---This constant has a string describing the current LuaSocket version.
 ---@type string
-socket._VERSION = ''
+socket._VERSION = ""
 
 return socket
