@@ -1,4 +1,5 @@
 ---@meta
+---The definitions are developed in this repository: https://github.com/LuaCATS/luasocket
 
 ---
 ---https://github.com/lunarmodules/luasocket/blob/master/src/mbox.lua
