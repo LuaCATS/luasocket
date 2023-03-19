@@ -257,6 +257,7 @@ function mime.unb64(C, D) end
 ---```
 function mime.unqp() end
 
+---
 ---A, m = mime.wrp(n [, B, length])
 ---
 ---Low-level filter to break text into lines with CRLF marker.
