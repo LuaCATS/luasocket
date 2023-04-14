@@ -26,6 +26,8 @@
 ----- loads the MIME module and everything it requires
 ---local mime = require("mime")
 ---```
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/mime.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 local mime = {}
 
 ---
@@ -37,6 +39,8 @@ local mime = {}
 ---"`binary`". `Mode` defaults to "`text`".
 ---
 ---@param name 'base64'|'quoted-printable'
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/mime.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function mime.decode(name) end
 
 ---
@@ -49,6 +53,8 @@ function mime.decode(name) end
 ---
 ---@param name 'base64'|'quoted-printable'
 ---@param mode? 'text'|'binary'
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/mime.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function mime.encode(name, mode) end
 
 ---
@@ -68,6 +74,8 @@ function mime.encode(name, mode) end
 ---guarantee that the number of empty lines will be correct.
 ---
 ---@param marker string
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/mime.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function mime.normalize(marker) end
 
 ---
@@ -76,6 +84,8 @@ function mime.normalize(marker) end
 ---Note: The `smtp.send`function
 ---uses this filter automatically. You don't need to chain it with your
 ---source, or apply it to your message body.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/mime.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function mime.stuff() end
 
 ---
@@ -105,6 +115,8 @@ function mime.stuff() end
 ---
 ---@param name 'text'|'base64'|'quoted-printable'
 ---@param length integer
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/mime.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function mime.wrap(name, length) end
 
 ---
@@ -127,6 +139,8 @@ function mime.wrap(name, length) end
 ---
 ---@return string A - `A` is the encoded version of the largest prefix of `C..D` that can be encoded unambiguously.
 ---@return string B -  `B` has the remaining bytes of `C..D`, before encoding.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/mime.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function mime.b64(C, D) end
 
 ---
@@ -151,6 +165,8 @@ function mime.b64(C, D) end
 ---
 ---@return string A - `A` is the stuffed version of `B`.
 ---@return integer n - `n` gives the number of characters from the sequence CRLF seen in the end of `B`.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/mime.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function mime.dot(m, B) end
 
 ---
@@ -173,6 +189,8 @@ function mime.dot(m, B) end
 ---
 ---@return string A # `A` is the translated version of `D`.
 ---@return string B # `B` is the same as `C`, but for the current chunk.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/mime.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function mime.eol(C, D, marker) end
 
 ---
@@ -193,6 +211,8 @@ function mime.eol(C, D, marker) end
 ---
 ---@return string A # `A` is the encoded version of the largest prefix of `C..D` that can be encoded unambiguously.
 ---@return string B # `B` has the remaining bytes of `C..D`, before decoding.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/mime.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function mime.qp(C, D, marker) end
 
 ---
@@ -208,6 +228,8 @@ function mime.qp(C, D, marker) end
 ---
 ---@return string A # `A` is a copy of `B`, broken into lines of at most `length` bytes (defaults to 76).
 ---@return integer m # returns the number of bytes left in the last line of `A`.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/mime.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function mime.qpwrp(n, B, length) end
 
 ---
@@ -230,6 +252,8 @@ function mime.qpwrp(n, B, length) end
 ---
 ---@return string A # `A` is the decoded version of the largest prefix of `C..D` that can be decoded unambiguously.
 ---@return string B # `B` has the remaining bytes of `C..D`, before decoding.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/mime.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function mime.unb64(C, D) end
 
 ---
@@ -250,6 +274,8 @@ function mime.unb64(C, D) end
 ---
 ---@return string A # `A` is the decoded version of the largest prefix of `C..D` that can be decoded unambiguously. If `D` is `nil`, `A` is augmented with the encoding of the remaining bytes of `C`.
 ---@return string B # `B` has the remaining bytes of `C..D`, before decoding.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/mime.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function mime.unqp(C, D) end
 
 ---
@@ -266,6 +292,8 @@ function mime.unqp(C, D) end
 ---
 ---@return string A # `A` is a copy of `B`, broken into lines of at most `length` bytes (defaults to 76).
 ---@return integer m # returns the number of bytes left in the last line of `A`.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/mime.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function mime.wrp(n, B, length) end
 
 return mime
