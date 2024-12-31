@@ -452,7 +452,6 @@ function tcp_master:listen(backlog) end
 ---| "timeout" If there was a timeout during the operation.
 ---| "closed" If the connection was closed before the transmission was completed.
 
-
 -- HACK: For some reason number doesn't show up in the completion if it's
 --       defined as part of this union. It should be defined in-place.
 
@@ -519,7 +518,7 @@ function tcp_master:setstats(received, sent, age) end
 ---
 ---**Note:** although timeout values have millisecond precision in LuaSocket, large blocks can cause I/O functions not to respect timeout values due to the time the library takes to transfer blocks to and from the OS and to and from the Lua interpreter. Also, function that accept host names and perform automatic name resolution might be blocked by the resolver for longer than the specified timeout value.
 ---
----**Note:** The old timeout method is deprecated. The name has been changed for sake of uniformity, since all other method names already contained verbs making their imperative nature obvious. 
+---**Note:** The old timeout method is deprecated. The name has been changed for sake of uniformity, since all other method names already contained verbs making their imperative nature obvious.
 ---
 ---@param value number | nil Time to wait, in seconds. Use `nil` or negative to block indefinitely.
 ---@param mode? TCPTimeoutMode The default mode is "b"
@@ -531,7 +530,7 @@ function tcp_master:settimeout(value, mode) end
 ---| "receive" Disallow further receives on the object.
 
 ---
----Shuts down part of a full-duplex connection. 
+---Shuts down part of a full-duplex connection.
 ---@param mode TCPShutdownMode Determines which way of the connection should be shut down.
 ---@return 1 # Always returns 1.
 function tcp_client:shutdown(mode) end
