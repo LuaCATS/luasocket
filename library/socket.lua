@@ -411,6 +411,16 @@ function tcp_server:accept() end
 function tcp_master:bind(address, port) end
 
 ---
+---Closes a TCP object.
+---The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications.
+---No further operations (except for further calls to the close method) are allowed on a closed socket.
+---
+---Note: It is important to close all used sockets once they are not needed, since, in many systems,
+---each socket uses a file descriptor, which are limited system resources.
+---Garbage-collected objects are automatically closed before destruction, though.
+function tcp_master:close() end
+
+---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
 ---Note: The choice between IPv4 and IPv6 happens during a call to bind or connect, depending on the address family obtained from the resolver.
@@ -433,10 +443,6 @@ function socket.tcp4() end
 ---
 ---@return TCPSocketMaster
 function socket.tcp6() end
-
----
----@class TCPSocket
-local tcp_socket = {}
 
 ---
 ---Attempts to connect a master object to a remote host, transforming it into a client object.
@@ -477,15 +483,6 @@ function tcp_socket:receive(pattern, prefix) end
 ---@return nil | number, nil | string # If successful, the method returns the index of the last byte within [i, j] that has been sent. Notice that, if i is 1 or absent, this is effectively the total number of bytes sent. In case of error, the method returns nil, followed by an error message, followed by the index of the last byte within [i, j] that has been sent. You might want to try again from the byte following that. The error message can be 'closed' in case the connection was closed before the transmission was completed or the string 'timeout' in case there was a timeout during the operation.
 function tcp_socket:send(data, i, j) end
 
----
----Closes a TCP object.
----The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications.
----No further operations (except for further calls to the close method) are allowed on a closed socket.
----
----Note: It is important to close all used sockets once they are not needed, since, in many systems,
----each socket uses a file descriptor, which are limited system resources.
----Garbage-collected objects are automatically closed before destruction, though.
-function tcp_socket:close() end
 
 
 --#endregion
