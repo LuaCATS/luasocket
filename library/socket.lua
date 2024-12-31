@@ -37,19 +37,14 @@ socket.headers = {}
 socket.headers.canonic = {}
 
 ---
----This function is a shortcut that creates and returns a TCP server object
----bound to a local `address` and `port`, ready to
----accept client connections. Optionally,
----user can also specify the `backlog` argument to the
----`listen` method (defaults to 32).
+---This function is a shortcut that creates and returns a TCP server object bound to a local `address` and `port`, ready to accept client connections. Optionally, user can also specify the `backlog` argument to the `listen` method.
 ---
----Note: The server object returned will have the option `reuseaddr`
----set to `true`.
+---Note: The server object returned will have the option `reuseaddr` set to `true`.
 ---
 ---@param address string
 ---@param port integer
----@param backlog? integer
----@return TCPSocket
+---@param backlog? integer Defaults to 32.
+---@return TCPSocketServer
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.bind(address, port, backlog) end
