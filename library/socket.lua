@@ -576,27 +576,6 @@ function socket.tcp4() end
 ---@return TCPSocketMaster
 function socket.tcp6() end
 
-
----Reads data from a client object, according to the specified read pattern.
----Patterns follow the Lua file I/O format,
----and the difference in performance between all patterns is negligible.
----
----@param pattern? PatternMode # read everything, one line or a specific number of bytes. Default to reading one line.
----@param prefix? string # prefix is an optional string to be concatenated to the beginning of any received data before return.
----@return nil | string, nil | string, nil | string # if successful, the method returns the received pattern. In case of error, the method returns nil followed by an error message, followed by a (possibly empty) string containing the partial that was received. The error message can be the string 'closed' in case the connection was closed before the transmission was completed or the string 'timeout' in case there was a timeout during the operation.
-function tcp_socket:receive(pattern, prefix) end
-
----
----Sends data through client object.
----
----Note: Output is not buffered. For small strings, it is always better to concatenate them in Lua (with the '..' operator) and send the result in one call instead of calling the method several times.
----
----@param data string # data to be send on the client socket
----@param i? integer # behave like the standard string:sub(i) function
----@param j? integer # behave like the standard string:sub(i, j) function
----@return nil | number, nil | string # If successful, the method returns the index of the last byte within [i, j] that has been sent. Notice that, if i is 1 or absent, this is effectively the total number of bytes sent. In case of error, the method returns nil, followed by an error message, followed by the index of the last byte within [i, j] that has been sent. You might want to try again from the byte following that. The error message can be 'closed' in case the connection was closed before the transmission was completed or the string 'timeout' in case there was a timeout during the operation.
-function tcp_socket:send(data, i, j) end
-
 --#endregion
 --}}}
 
