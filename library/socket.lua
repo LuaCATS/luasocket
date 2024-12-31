@@ -437,6 +437,12 @@ function tcp_master:close() end
 ---@return nil | 1, nil | string # In case of error, the method returns nil followed by a string describing the error. In case of success, the method returns 1.
 function tcp_master:connect(address, port) end
 
+---
+---Check the read buffer status.
+---
+---**Note: This is an internal method, use at your own risk.**
+---@return boolean # `true` if there is any data in the read buffer, `false` otherwise.
+function tcp_master:dirty() end
 
 ---
 ---Get the underling socket descriptor or handle associated to the object.
