@@ -481,6 +481,23 @@ function tcp_client:getpeername() end
 function tcp_master:getsockname() end
 
 ---
+---Returns the current block timeout followed by the current total timeout.
+---
+---@return number, number # Current block timeout, current total timeout.
+function tcp_master:gettimeout() end
+
+---
+---Specifies the socket is willing to receive connections, transforming the object into a server object. Server objects support the `accept`, `getsockname`, `setoption`, `settimeout`, and `close` methods.
+---
+---On success, the type changes to `TCPSocketServer`, and you should cast it as such.
+---
+---@param backlog integer The number number of client connections that can be queued waiting for service. If the queue is full and another client attempts connection, the connection is refused.
+---
+---@return 1 | nil, nil | string # Returns 1 on success, nil and an error on failure.
+---
+function tcp_master:listen(backlog) end
+
+---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
 ---Note: The choice between IPv4 and IPv6 happens during a call to bind or connect, depending on the address family obtained from the resolver.
