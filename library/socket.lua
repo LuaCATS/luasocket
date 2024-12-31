@@ -553,6 +553,22 @@ function tcp_client:receive(pattern, prefix) end
 function tcp_client:send(data, i, j) end
 
 ---
+---Sets options for the TCP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.
+---
+---@param option TCPOption A string with the option name
+---@param value? any Depends on the option being set
+---@return 1 | nil, string | nil # 1 on success, nil and an error message otherwise.
+function tcp_client:setoption(option, value) end
+
+---
+---Sets options for the TCP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.
+---
+---@param option TCPOption A string with the option name
+---@param value? any Depends on the option being set
+---@return 1 | nil, string | nil # 1 on success, nil and an error message otherwise.
+function tcp_server:setoption(option, value) end
+
+---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
 ---Note: The choice between IPv4 and IPv6 happens during a call to bind or connect, depending on the address family obtained from the resolver.
