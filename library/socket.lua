@@ -604,6 +604,14 @@ function tcp_master:settimeout(value, mode) end
 function tcp_client:shutdown(mode) end
 
 ---
+---Sets the underling socket descriptor or handle associated to the object. The current one is simply replaced, not closed, and no other change to the object state is made. To set it as invalid use `_SOCKETINVALID`.
+---
+---**Note: This is an internal method. Unlikely to be portable. Use at your own risk.**
+---
+---@param fd integer
+function tcp_master:setfd(fd) end
+
+---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
 ---Note: The choice between IPv4 and IPv6 happens during a call to bind or connect, depending on the address family obtained from the resolver.
