@@ -437,6 +437,14 @@ function tcp_master:close() end
 ---@return nil | 1, nil | string # In case of error, the method returns nil followed by a string describing the error. In case of success, the method returns 1.
 function tcp_master:connect(address, port) end
 
+
+---
+---Get the underling socket descriptor or handle associated to the object.
+---
+---**Note: This is an internal method. Unlikely to be portable. use at your own risk.**
+---@return integer # The descriptor or handle. `-1` if the object has been closed. `_SOCKETINVALID` if it is an invalid socket.
+function tcp_master:getfd() end
+
 ---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
