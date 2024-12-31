@@ -533,8 +533,8 @@ function tcp_master:listen(backlog) end
 ---
 ---**Important note:** This function was changed severely. It used to support multiple patterns (but I have never seen this feature used) and now it doesn't anymore. Partial results used to be returned in the same way as successful results. This last feature violated the idea that all functions should return nil on error. Thus it was changed too.
 ---
----@param pattern ReceivePatternMode | number | nil The default is "*l"
----@param prefix string | nil Optional string to be concatenated to the beginning of any received data before return.
+---@param pattern? ReceivePatternMode | number The default is "*l"
+---@param prefix? string Optional string to be concatenated to the beginning of any received data before return.
 ---
 ---@return string | nil, SocketError | string | nil # Returns the received pattern when successful, otherwise nil and an error message.
 function tcp_client:receive(pattern, prefix) end
@@ -547,8 +547,8 @@ function tcp_client:receive(pattern, prefix) end
 ---**Note:** Output is not buffered. For small strings, it is always better to concatenate them in Lua (with the '..' operator) and send the result in one call instead of calling the method several times.
 ---
 ---@param data string The string to be sent.
----@param i integer | nil
----@param j integer | nil
+---@param i? integer
+---@param j? integer
 ---@return integer | nil, SocketError | string | nil, integer | nil # On success the number of bytes sent, otherwise nil followed by an error message, followed by the index of the last byte within `[i, j]` that has been sent. You might want to try again from the byte following that.
 function tcp_client:send(data, i, j) end
 
