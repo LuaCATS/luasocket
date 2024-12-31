@@ -37,57 +37,6 @@ socket.headers = {}
 socket.headers.canonic = {}
 
 ---
----This function is a shortcut that creates and returns a TCP server object bound to a local `address` and `port`, ready to accept client connections. Optionally, user can also specify the `backlog` argument to the `listen` method.
----
----Note: The server object returned will have the option `reuseaddr` set to `true`.
----
----@param address string
----@param port integer
----@param backlog? integer Defaults to 32.
----@return TCPSocketServer
----
----😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
-function socket.bind(address, port, backlog) end
-
----
----This function is a shortcut that creates and returns a TCP client object connected to a remote `address` at a given `port`. Optionally, the user can also specify the local address and port to bind (`locaddr` and `locport`), or restrict the socket family to "`inet`" or "`inet6`".
----
----Two variations of connect are defined as simple helper functions that restrict the `family`, `socket.connect4` and `socket.connect6`.
----
----@param address string
----@param port integer
----@param locaddr? string The local address
----@param locport? integer The local port
----@param family? 'inet'|'inet6' If not specified, the family depends on your system configuration.
----@return TCPSocketClient | nil, nil | string # Returns the client on success, or `nil` and an error message on failure.
----😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
-function socket.connect(address, port, locaddr, locport, family) end
-
----
----This function is a shortcut that creates and returns an IPv4 TCP client object connected to a remote `address` at a given `port`. Optionally, the user can also specify the local address and port to bind (`locaddr` and `locport`)
----
----@param address string
----@param port integer
----@param locaddr? string The local address
----@param locport? integer The local port
----
----@return TCPSocketClient | nil, nil | string # Returns the client on success, or `nil` and an error message on failure.
----😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
-function socket.connect4(address, port, locaddr, locport) end
-
----
----This function is a shortcut that creates and returns an IPv6 TCP client object connected to a remote `address` at a given `port`. Optionally, the user can also specify the local address and port to bind (`locaddr` and `locport`)
----
----@param address string
----@param port integer
----@param locaddr? string The local address
----@param locport? integer The local port
----
----@return TCPSocketClient | nil, nil | string # Returns the client on success, or `nil` and an error message on failure.
----😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
-function socket.connect6(address, port, locaddr, locport) end
-
----
 ---This constant is set to `true` if the library was compiled
 ---with debug support.
 ---
@@ -594,6 +543,59 @@ function tcp_client:shutdown(mode) end
 ---
 ---@param fd integer
 function tcp_master:setfd(fd) end
+
+-- The following are in the socket namespace --
+
+---
+---This function is a shortcut that creates and returns a TCP server object bound to a local `address` and `port`, ready to accept client connections. Optionally, user can also specify the `backlog` argument to the `listen` method.
+---
+---Note: The server object returned will have the option `reuseaddr` set to `true`.
+---
+---@param address string
+---@param port integer
+---@param backlog? integer Defaults to 32.
+---@return TCPSocketServer
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
+function socket.bind(address, port, backlog) end
+
+---
+---This function is a shortcut that creates and returns a TCP client object connected to a remote `address` at a given `port`. Optionally, the user can also specify the local address and port to bind (`locaddr` and `locport`), or restrict the socket family to "`inet`" or "`inet6`".
+---
+---Two variations of connect are defined as simple helper functions that restrict the `family`, `socket.connect4` and `socket.connect6`.
+---
+---@param address string
+---@param port integer
+---@param locaddr? string The local address
+---@param locport? integer The local port
+---@param family? 'inet'|'inet6' If not specified, the family depends on your system configuration.
+---@return TCPSocketClient | nil, nil | string # Returns the client on success, or `nil` and an error message on failure.
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
+function socket.connect(address, port, locaddr, locport, family) end
+
+---
+---This function is a shortcut that creates and returns an IPv4 TCP client object connected to a remote `address` at a given `port`. Optionally, the user can also specify the local address and port to bind (`locaddr` and `locport`)
+---
+---@param address string
+---@param port integer
+---@param locaddr? string The local address
+---@param locport? integer The local port
+---
+---@return TCPSocketClient | nil, nil | string # Returns the client on success, or `nil` and an error message on failure.
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
+function socket.connect4(address, port, locaddr, locport) end
+
+---
+---This function is a shortcut that creates and returns an IPv6 TCP client object connected to a remote `address` at a given `port`. Optionally, the user can also specify the local address and port to bind (`locaddr` and `locport`)
+---
+---@param address string
+---@param port integer
+---@param locaddr? string The local address
+---@param locport? integer The local port
+---
+---@return TCPSocketClient | nil, nil | string # Returns the client on success, or `nil` and an error message on failure.
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
+function socket.connect6(address, port, locaddr, locport) end
 
 ---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method `listen` (after a call to `bind`) or into a client object with the method `connect`. The only other method supported by a master object is the close method.
