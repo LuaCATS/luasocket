@@ -503,6 +503,11 @@ function tcp_master:gettimeout() end
 ---
 function tcp_master:listen(backlog) end
 
+---@alias SocketError
+---| "timeout" If there was a timeout during the operation.
+---| "closed" If the connection was closed before the transmission was completed.
+
+
 -- HACK: For some reason number doesn't show up in the completion if it's
 --       defined as part of this union. It should be defined in-place.
 
@@ -519,9 +524,21 @@ function tcp_master:listen(backlog) end
 ---@param pattern ReceivePatternMode | number | nil The default is "*l"
 ---@param prefix string | nil Optional string to be concatenated to the beginning of any received data before return.
 ---
----@return string | nil, "timeout" | "closed" | string | nil # Returns the received pattern when successful, otherwise nil and an error message. It may be "closed" in case the connection was closed before the transmission was completed, or "timeout" in case there was a timeout during the operation.
+---@return string | nil, SocketError | string | nil # Returns the received pattern when successful, otherwise nil and an error message.
 function tcp_client:receive(pattern, prefix) end
 
+---
+---Sends data through client object.
+---
+---The optional arguments `i` and `j` work exactly like the standard `string.sub` Lua function to allow the selection of a substring to be sent.
+---
+---**Note:** Output is not buffered. For small strings, it is always better to concatenate them in Lua (with the '..' operator) and send the result in one call instead of calling the method several times.
+---
+---@param data string The string to be sent.
+---@param i integer | nil
+---@param j integer | nil
+---@return integer | nil, SocketError | string | nil, integer | nil # On success the number of bytes sent, otherwise nil followed by an error message, followed by the index of the last byte within `[i, j]` that has been sent. You might want to try again from the byte following that.
+function tcp_client:send(data, i, j) end
 
 ---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
