@@ -453,11 +453,13 @@ function tcp_master:getfd() end
 
 ---@alias TCPOption "keepalive" | "linger" | "reuseaddr" | "tcp-nodelay"
 
+---
 ---Gets options for the TCP object. See `setoption` for description of the option names and values.
 ---@param option TCPOption
 ---@return any | nil, nil | string # The option value in case of success, or nil followed by an error message otherwise.
 function tcp_client:getoption(option) end
 
+---
 ---Gets options for the TCP object. See `setoption` for description of the option names and values.
 ---@param option TCPOption
 ---@return any | nil, nil | string # The option value in case of success, or nil followed by an error message otherwise.
