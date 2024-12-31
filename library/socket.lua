@@ -465,19 +465,25 @@ function tcp_client:getoption(option) end
 ---@return any | nil, nil | string # The option value in case of success, or nil followed by an error message otherwise.
 function tcp_server:getoption(option) end
 
+---@alias SocketFamily
+---| "inet" IPv4
+---| "inet6" IPv6
+---| "unspec" Unspecified
+---| "unknown" Unknown
+
 ---
 ---Returns information about the remote side of a connected client object.
 ---
 ---Note: It makes no sense to call this method on server objects.
 ---
----@return string | nil, integer | nil, "inet" | "inet6" | "unspec" | "unknown" | nil # The IP address of the peer, the port number that the peer is using for the connection, and the family. In case of error, returns `nil`.
+---@return string | nil, integer | nil, SocketFamily | nil # The IP address of the peer, the port number that the peer is using for the connection, and the family. In case of error, returns `nil`.
 ---
 function tcp_client:getpeername() end
 
 ---
 ---Returns the local address information associated to the object.
 ---
----@return string | nil, integer | nil, "inet" | "inet6" | "unspec" | "unknown" | nil # The IP address of the peer, the port number that the peer is using for the connection, and the family. In case of error, returns `nil`.
+---@return string | nil, integer | nil, SocketFamily | nil # The IP address of the peer, the port number that the peer is using for the connection, and the family. In case of error, returns `nil`.
 function tcp_master:getsockname() end
 
 ---
