@@ -375,19 +375,30 @@ socket._VERSION = ""
 --#region TCP
 
 ---
+---@class TCPSocketMaster
+local tcp_master = {}
+
+---
+---@class TCPSocketServer : TCPSocketMaster
+local tcp_server = {}
+
+---
+---@class TCPSocketClient : TCPSocketMaster
+local tcp_client = {}
+---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
 ---Note: The choice between IPv4 and IPv6 happens during a call to bind or connect, depending on the address family obtained from the resolver.
 ---Note: Before the choice between IPv4 and IPv6 happens, the internal socket object is invalid and therefore setoption will fail.
 ---
----@return TCPSocket
+---@return TCPSocketMaster
 function socket.tcp() end
 
 ---
 ---Creates and returns an IPv4 TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
 ---
----@return TCPSocket
+---@return TCPSocketMaster
 function socket.tcp4() end
 
 ---
@@ -395,7 +406,7 @@ function socket.tcp4() end
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
 ---Note: The TCP object returned will have the option "ipv6-v6only" set to true.
 ---
----@return TCPSocket
+---@return TCPSocketMaster
 function socket.tcp6() end
 
 ---
