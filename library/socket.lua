@@ -423,6 +423,21 @@ function tcp_master:bind(address, port) end
 function tcp_master:close() end
 
 ---
+---Attempts to connect a master object to a remote host, transforming it into a client object.
+---Client objects support methods `send`, `receive`, `getsockname`, `getpeername`, `settimeout`, and `close`.
+---
+---On success, the type changes to `TCPClient`, and you should cast it as such.
+---
+---Note: The function `socket.connect` is available and is a shortcut for the creation of client sockets.
+---Note: Starting with LuaSocket 2.0, the `settimeout` method affects the behavior of connect, causing it to return with an error in case of a timeout. If that happens, you can still call socket.select with the socket in the sendt table. The socket will be writable when the connection is established.
+---Note: Starting with LuaSocket 3.0, the host name resolution depends on whether the socket was created by socket.tcp, socket.tcp4 or socket.tcp6. Addresses from the appropriate family (or both) are tried in the order returned by the resolver until the first success or until the last failure. If the timeout was set to zero, only the first address is tried.
+---
+---@param address string # IP address or a host name
+---@param port integer # TCP port, in the range [1..64K)
+---@return nil | 1, nil | string # In case of error, the method returns nil followed by a string describing the error. In case of success, the method returns 1.
+function tcp_master:connect(address, port) end
+
+---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
 ---Note: The choice between IPv4 and IPv6 happens during a call to bind or connect, depending on the address family obtained from the resolver.
@@ -445,19 +460,6 @@ function socket.tcp4() end
 ---
 ---@return TCPSocketMaster
 function socket.tcp6() end
-
----
----Attempts to connect a master object to a remote host, transforming it into a client object.
----Client objects support methods send, receive, getsockname, getpeername, settimeout, and close.
----
----Note: The function socket.connect is available and is a shortcut for the creation of client sockets.
----Note: Starting with LuaSocket 2.0, the settimeout method affects the behavior of connect, causing it to return with an error in case of a timeout. If that happens, you can still call socket.select with the socket in the sendt table. The socket will be writable when the connection is established.
----Note: Starting with LuaSocket 3.0, the host name resolution depends on whether the socket was created by socket.tcp, socket.tcp4 or socket.tcp6. Addresses from the appropriate family (or both) are tried in the order returned by the resolver until the first success or until the last failure. If the timeout was set to zero, only the first address is tried.
----
----@param address string # IP address or a host name
----@param port integer # TCP port, in the range [1..64K)
----@return nil | 1, nil | string # In case of error, the method returns nil followed by a string describing the error. In case of success, the method returns 1.
-function tcp_socket:connect(address, port) end
 
 ---
 ---@alias PatternMode
