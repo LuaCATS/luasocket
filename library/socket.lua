@@ -385,6 +385,17 @@ local tcp_server = {}
 ---
 ---@class TCPSocketClient : TCPSocketMaster
 local tcp_client = {}
+
+---
+---Waits for a remote connection on the server object and returns a client object representing that connection.
+---
+---If a connection is successfully initiated, a client object is returned. If a timeout condition is met, the method returns `nil` followed by the error string 'timeout'. Other errors are reported by `nil` followed by a message describing the error.
+---
+---Note: calling `socket.select` with a server object in the recvt parameter before a call to accept does not guarantee accept will return immediately. Use the `settimeout` method or accept might block until another client shows up.
+---
+---@return TCPSocketClient | nil, "timeout" | string
+function tcp_server:accept() end
+
 ---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
