@@ -397,6 +397,20 @@ local tcp_client = {}
 function tcp_server:accept() end
 
 ---
+---Binds a master object to address and port on the local host.
+---
+---Address can be an IP address or a host name. Port must be an integer number in the range [0..64K). If address is `'*'`, the system binds to all local interfaces using the `INADDR_ANY` constant or `IN6ADDR_ANY_INIT`, according to the family. If `port` is `0`, the system automatically chooses an ephemeral port.
+---
+---In case of success, the method returns `1`. In case of error, the method returns `nil` followed by an error message.
+---
+---Note: The function `socket.bind` is available and is a shortcut for the creation of server sockets.
+---
+---@param address string
+---@param port integer
+---@return 1|nil, nil|string
+function tcp_master:bind(address, port) end
+
+---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
 ---Note: The choice between IPv4 and IPv6 happens during a call to bind or connect, depending on the address family obtained from the resolver.
