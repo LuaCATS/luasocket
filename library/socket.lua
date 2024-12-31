@@ -451,7 +451,19 @@ function tcp_master:dirty() end
 ---@return integer # The descriptor or handle. `-1` if the object has been closed. `_SOCKETINVALID` if it is an invalid socket.
 function tcp_master:getfd() end
 
----@alias TCPOption "keepalive" | "linger" | "reuseaddr" | "tcp-nodelay"
+---@alias TCPOption
+---| "keepalive" Setting this option to `true` enables the periodic transmission of messages on a connected socket. Should the connected party fail to respond to these messages, the connection is considered broken and processes using the socket are notified;
+---| "linger" Controls the action taken when unsent data are queued on a socket and a close is performed. The value is a table with a boolean entry `on` and a numeric entry for the time interval `timeout` in seconds. If the `on` field is set to `true`, the system will block the process on the close attempt until it is able to transmit the data or until `timeout` has passed. If `on` is `false` and a `close` is issued, the system will process the `close` in a manner that allows the process to continue as quickly as possible. I do not advise you to set this to anything other than zero;
+---| "reuseaddr" Setting this option indicates that the rules used in validating addresses supplied in a call to bind should allow reuse of local addresses;
+---| "tcp-nodelay" Setting this option to `true` disables the Nagle's algorithm for the connection;
+---| "tcp-keepidle" value in seconds for `TCP_KEEPIDLE` **Linux only!!**
+---| "tcp-keepcnt" value for `TCP_KEEPCNT` **Linux only!!**
+---| "tcp-keepintvl" value for `TCP_KEEPINTVL` **Linux only!!**
+---| "tcp-defer-accept" value for `TCP_DEFER_ACCEPT` **Linux only!!**
+---| "tcp-fastopen" value for `TCP_FASTOPEN` **Linux only!!**
+---| "tcp-fastopen-connect" value for `TCP_FASTOPEN_CONNECT` **Linux only!!**
+---| "ipv6-v6only" Setting this option to `true` restricts an inet6 socket to sending and receiving only IPv6 packets.
+--- The descriptions above come from the man pages.
 
 ---
 ---Gets options for the TCP object. See `setoption` for description of the option names and values.
