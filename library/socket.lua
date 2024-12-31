@@ -76,46 +76,32 @@ function socket.bind(address, port, backlog) end
 function socket.connect(address, port, locaddr, locport, family) end
 
 ---
----This function is a shortcut that creates and returns a TCP client object
----connected to a remote `address` at a given `port`. Optionally,
+---This function is a shortcut that creates and returns an IPv4 TCP client
+---object connected to a remote `address` at a given `port`. Optionally,
 ---the user can also specify the local address and port to bind
----(`locaddr` and `locport`), or restrict the socket family
----to "`inet`" or "`inet6`".
----
----Without specifying `family` to `connect`, whether a tcp or tcp6
----connection is created depends on your system configuration. Two variations
----of connect are defined as simple helper functions that restrict the
----`family`, `socket.connect4` and `socket.connect6`.
+---(`locaddr` and `locport`)
 ---
 ---@param address string
 ---@param port integer
 ---@param locaddr? string
 ---@param locport? integer
----@param family? 'inet'|'inet6'
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
-function socket.connect4(address, port, locaddr, locport, family) end
+function socket.connect4(address, port, locaddr, locport) end
 
 ---
----This function is a shortcut that creates and returns a TCP client object
----connected to a remote `address` at a given `port`. Optionally,
+---This function is a shortcut that creates and returns an IPv6 TCP client
+---object connected to a remote `address` at a given `port`. Optionally,
 ---the user can also specify the local address and port to bind
----(`locaddr` and `locport`), or restrict the socket family
----to "`inet`" or "`inet6`".
----
----Without specifying `family` to `connect`, whether a tcp or tcp6
----connection is created depends on your system configuration. Two variations
----of connect are defined as simple helper functions that restrict the
----`family`, `socket.connect4` and `socket.connect6`.
+---(`locaddr` and `locport`)
 ---
 ---@param address string
 ---@param port integer
 ---@param locaddr? string
 ---@param locport? integer
----@param family? 'inet'|'inet6'
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
-function socket.connect6(address, port, locaddr, locport, family) end
+function socket.connect6(address, port, locaddr, locport) end
 
 ---
 ---This constant is set to `true` if the library was compiled
