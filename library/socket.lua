@@ -468,7 +468,7 @@ function tcp_server:getoption(option) end
 ---
 ---Returns information about the remote side of a connected client object.
 ---
----Note: It makes no sense to call this method on server objects. 
+---Note: It makes no sense to call this method on server objects.
 ---
 ---@return string | nil, integer | nil, "inet" | "inet6" | "unspec" | "unknown" | nil # The IP address of the peer, the port number that the peer is using for the connection, and the family. In case of error, returns `nil`.
 ---
@@ -546,8 +546,6 @@ function tcp_socket:receive(pattern, prefix) end
 ---@param j? integer # behave like the standard string:sub(i, j) function
 ---@return nil | number, nil | string # If successful, the method returns the index of the last byte within [i, j] that has been sent. Notice that, if i is 1 or absent, this is effectively the total number of bytes sent. In case of error, the method returns nil, followed by an error message, followed by the index of the last byte within [i, j] that has been sent. You might want to try again from the byte following that. The error message can be 'closed' in case the connection was closed before the transmission was completed or the string 'timeout' in case there was a timeout during the operation.
 function tcp_socket:send(data, i, j) end
-
-
 
 --#endregion
 --}}}
