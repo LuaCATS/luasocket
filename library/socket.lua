@@ -403,6 +403,8 @@ function tcp_server:accept() end
 ---
 ---In case of success, the method returns `1`. In case of error, the method returns `nil` followed by an error message.
 ---
+---On success, the type changes to `TCPSocketServer`, and you should cast it as such.
+---
 ---Note: The function `socket.bind` is available and is a shortcut for the creation of server sockets.
 ---
 ---@param address string
