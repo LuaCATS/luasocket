@@ -67,6 +67,7 @@ function socket.bind(address, port, backlog) end
 ---@param locport? integer
 ---@param family? 'inet'|'inet6'
 ---
+---@return TCPSocketClient | nil, nil | string # Returns the client on success, or `nil` and an error message on failure.
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.connect(address, port, locaddr, locport, family) end
 
@@ -81,6 +82,7 @@ function socket.connect(address, port, locaddr, locport, family) end
 ---@param locaddr? string
 ---@param locport? integer
 ---
+---@return TCPSocketClient | nil, nil | string # Returns the client on success, or `nil` and an error message on failure.
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.connect4(address, port, locaddr, locport) end
 
@@ -95,6 +97,7 @@ function socket.connect4(address, port, locaddr, locport) end
 ---@param locaddr? string
 ---@param locport? integer
 ---
+---@return TCPSocketClient | nil, nil | string # Returns the client on success, or `nil` and an error message on failure.
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.connect6(address, port, locaddr, locport) end
 
