@@ -569,6 +569,30 @@ function tcp_client:setoption(option, value) end
 function tcp_server:setoption(option, value) end
 
 ---
+---Resets accounting information on the socket, useful for throttling of bandwidth.
+---
+---@param received number Bytes received
+---@param sent number Byte sent
+---@param age number Age in seconds
+---@return 1 | nil # 1 on success, nil otherwise.
+function tcp_master:setstats(received, sent, age) end
+
+---@alias TCPTimeoutMode
+---| "b" block timeout. Specifies the upper limit on the amount of time LuaSocket can be blocked by the operating system while waiting for completion of any single I/O operation.
+---| "t" total timeout. Specifies the upper limit on the amount of time LuaSocket can block a Lua script before returning from a call.
+
+---
+---Changes the timeout values for the object. By default, all I/O operations are blocking. That is, any call to the methods `send`, `receive`, and `accept` will block indefinitely, until the operation completes. The `settimeout` method defines a limit on the amount of time the I/O methods can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.
+---
+---**Note:** although timeout values have millisecond precision in LuaSocket, large blocks can cause I/O functions not to respect timeout values due to the time the library takes to transfer blocks to and from the OS and to and from the Lua interpreter. Also, function that accept host names and perform automatic name resolution might be blocked by the resolver for longer than the specified timeout value.
+---
+---**Note:** The old timeout method is deprecated. The name has been changed for sake of uniformity, since all other method names already contained verbs making their imperative nature obvious. 
+---
+---@param value number | nil Time to wait, in seconds. Use `nil` or negative to block indefinitely.
+---@param mode? TCPTimeoutMode The default mode is "b"
+function tcp_master:settimeout(value, mode) end
+
+---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
 ---Note: The choice between IPv4 and IPv6 happens during a call to bind or connect, depending on the address family obtained from the resolver.
