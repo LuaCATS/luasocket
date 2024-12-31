@@ -592,6 +592,17 @@ function tcp_master:setstats(received, sent, age) end
 ---@param mode? TCPTimeoutMode The default mode is "b"
 function tcp_master:settimeout(value, mode) end
 
+---@alias TCPShutdownMode
+---| "both" Disallow further sends and receives on the object.
+---| "send" Disallow further sends on the object.
+---| "receive" Disallow further receives on the object.
+
+---
+---Shuts down part of a full-duplex connection. 
+---@param mode TCPShutdownMode Determines which way of the connection should be shut down.
+---@return 1 # Always returns 1.
+function tcp_client:shutdown(mode) end
+
 ---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
