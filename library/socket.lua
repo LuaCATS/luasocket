@@ -503,6 +503,26 @@ function tcp_master:gettimeout() end
 ---
 function tcp_master:listen(backlog) end
 
+-- HACK: For some reason number doesn't show up in the completion if it's
+--       defined as part of this union. It should be defined in-place.
+
+---
+---@alias ReceivePatternMode
+---| '*a' # Reads from the socket until the connection is closed. No end-of-line translation is performed
+---| '*l' # Reads a line of text from the socket. The line is terminated by a LF character (ASCII 10), optionally preceded by a CR character (ASCII 13). The CR and LF characters are not included in the returned line. In fact, all CR characters are ignored by the pattern.
+
+---
+---Reads data from a client object, according to the specified read pattern. Patterns follow the Lua file I/O format, and the difference in performance between all patterns is negligible.
+---
+---**Important note:** This function was changed severely. It used to support multiple patterns (but I have never seen this feature used) and now it doesn't anymore. Partial results used to be returned in the same way as successful results. This last feature violated the idea that all functions should return nil on error. Thus it was changed too.
+---
+---@param pattern ReceivePatternMode | number | nil The default is "*l"
+---@param prefix string | nil Optional string to be concatenated to the beginning of any received data before return.
+---
+---@return string | nil, "timeout" | "closed" | string | nil # Returns the received pattern when successful, otherwise nil and an error message. It may be "closed" in case the connection was closed before the transmission was completed, or "timeout" in case there was a timeout during the operation.
+function tcp_client:receive(pattern, prefix) end
+
+
 ---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
@@ -527,11 +547,6 @@ function socket.tcp4() end
 ---@return TCPSocketMaster
 function socket.tcp6() end
 
----
----@alias PatternMode
----| '*a' # Reads from the socket until the connection is closed. No end-of-line translation is performed
----| '*l' # Reads a line of text from the socket. The line is terminated by a LF character (ASCII 10), optionally preceded by a CR character (ASCII 13). The CR and LF characters are not included in the returned line. In fact, all CR characters are ignored by the pattern. This is the default pattern;
----| number # Causes the method to read a specified number of bytes from the socket.
 
 ---Reads data from a client object, according to the specified read pattern.
 ---Patterns follow the Lua file I/O format,
