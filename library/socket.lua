@@ -48,7 +48,8 @@ socket.headers.canonic = {}
 ---
 ---@param address string
 ---@param port integer
----@param backlog? any
+---@param backlog? integer
+---@return TCPSocket
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.bind(address, port, backlog) end
