@@ -451,6 +451,18 @@ function tcp_master:dirty() end
 ---@return integer # The descriptor or handle. `-1` if the object has been closed. `_SOCKETINVALID` if it is an invalid socket.
 function tcp_master:getfd() end
 
+---@alias TCPOption "keepalive" | "linger" | "reuseaddr" | "tcp-nodelay"
+
+---Gets options for the TCP object. See `setoption` for description of the option names and values.
+---@param option TCPOption
+---@return any | nil, nil | string # The option value in case of success, or nil followed by an error message otherwise.
+function tcp_client:getoption(option) end
+
+---Gets options for the TCP object. See `setoption` for description of the option names and values.
+---@param option TCPOption
+---@return any | nil, nil | string # The option value in case of success, or nil followed by an error message otherwise.
+function tcp_server:getoption(option) end
+
 ---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
