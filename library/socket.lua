@@ -371,6 +371,9 @@ function socket.try(...) end
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 socket._VERSION = ""
 
+--{{{ TCP
+--#region TCP
+
 ---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
@@ -447,5 +450,9 @@ function tcp_socket:send(data, i, j) end
 ---each socket uses a file descriptor, which are limited system resources.
 ---Garbage-collected objects are automatically closed before destruction, though.
 function tcp_socket:close() end
+
+
+--#endregion
+--}}}
 
 return socket
