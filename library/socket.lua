@@ -475,6 +475,12 @@ function tcp_server:getoption(option) end
 function tcp_client:getpeername() end
 
 ---
+---Returns the local address information associated to the object.
+---
+---@return string | nil, integer | nil, "inet" | "inet6" | "unspec" | "unknown" | nil # The IP address of the peer, the port number that the peer is using for the connection, and the family. In case of error, returns `nil`.
+function tcp_master:getsockname() end
+
+---
 ---Creates and returns an TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---In case of success, a new master object is returned. In case of error, nil is returned, followed by an error message.
 ---Note: The choice between IPv4 and IPv6 happens during a call to bind or connect, depending on the address family obtained from the resolver.
