@@ -627,8 +627,6 @@ function socket.tcp6() end
 --#region UDP
 
 ---@alias Datagram string
----@alias IP string
----@alias Port number
 ---@alias inetFamily
 ---| "inet" IPv4
 ---| "inet6" IPv6
