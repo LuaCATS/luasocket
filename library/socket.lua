@@ -631,7 +631,7 @@ function socket.tcp6() end
 ---| "inet" IPv4
 ---| "inet6" IPv6
 
---> Generic is my way to aviod stating the same thing twice.
+--> Generic is my way to avoid stating the same thing twice.
 --> Means that both connected and unconnected have it.
 
 ---@class UDPSocketGeneric
