@@ -543,8 +543,6 @@ function tcp_client:shutdown(mode) end
 ---@param fd integer
 function tcp_master:setfd(fd) end
 
--- UDP
-
 -- The following are in the socket namespace --
 
 ---
