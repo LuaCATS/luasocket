@@ -877,7 +877,7 @@ function udp_generic:setoption(option, value) end
 ---
 ---@return UDPSocketConnected
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
-function udp_unconnected:setpeername(address, port) end
+function udp_generic:setpeername(address, port) end
 
 ---
 ---Changes the peer of a UDP object. This method turns an unconnected UDP object into a connected UDP object or vice versa.
@@ -896,7 +896,7 @@ function udp_unconnected:setpeername(address, port) end
 ---
 ---@return UDPSocketUnconnected
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
-function udp_connected:setpeername(address) end
+function udp_generic:setpeername(address) end
 
 ---
 ---Binds the UDP object to a local address.
