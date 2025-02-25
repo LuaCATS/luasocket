@@ -308,6 +308,7 @@ socket._VERSION = ""
 ---{{{ Common Types
 --#region Common Types
 
+---A string representing a datagram
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 ---@alias Datagram string
@@ -318,12 +319,19 @@ socket._VERSION = ""
 -->       Sometimes its 1 and 2, others up to 3.
 
 ---
----😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
----@alias SocketReturnResult 1? # Returns 1 on success
+---A 1 in case of success
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
----@alias SocketReturnError string? # If operation fails, returns an error message
+---@alias SocketReturnResult 1?
 
+---
+---Error message in case of failure
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
+---@alias SocketReturnError string?
+
+---
+---A string with the family ("inet" or "inet6")
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 ---@alias SocketFamily
