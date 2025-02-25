@@ -756,7 +756,7 @@ function udp_generic:close() end
 ---
 ---@param option UDPOption
 ---
----@return any | nil, nil | string
+---@return any?, SocketReturnError
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_generic:getoption(option) end
@@ -768,8 +768,7 @@ function udp_generic:getoption(option) end
 ---
 ---Note: It makes no sense to call this method on unconnected objects.
 ---
----@return string, number, inetFamily
----
+---@return string?, number?, SocketFamily?
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_connected:getpeername() end
 
@@ -780,7 +779,7 @@ function udp_connected:getpeername() end
 ---
 ---Note: UDP sockets are not bound to any address until the `setsockname` or the `sendto` method is called for the first time (in which case it is bound to an ephemeral port and the wild-card address).
 ---
----@return string, number, inetFamily
+---@return string?, number?, SocketFamily?
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_generic:getsockname() end
@@ -806,7 +805,7 @@ function udp_generic:gettimeout() end
 ---
 ---@param size number?
 ---
----@return string? datagram
+---@return Datagram? datagram
 ---
 ---@return 'timeout'? err # `'timeout'` in case of timeout
 ---
@@ -816,7 +815,7 @@ function udp_generic:receive(size) end
 ---Works exactly as the `receive` method, except it returns the IP address and port as extra return values (and is therefore slightly less efficient)
 ---@param size number?
 ---
----@return string? datagram
+---@return Datagram? datagram
 ---@return string | 'timeout' ip_or_err # IP address or `'timeout'` error string
 ---@return number port
 ---
@@ -831,9 +830,9 @@ function udp_unconnected:receivefrom(size) end
 ---If successful, the method returns `1`. In case of error, the method returns `nil` followed by an `error message`.
 ---
 ---Note: In UDP, the send method never blocks and the only way it can fail is if the underlying transport layer refuses to send a message to the specified address (i.e. no interface accepts the address).
----@param datagram string
+---@param datagram Datagram
 ---
----@return number?, string error
+---@return SocketReturnResult, SocketReturnError
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_connected:send(datagram) end
 
@@ -846,11 +845,11 @@ function udp_connected:send(datagram) end
 ---
 ---Note: In UDP, the send method never blocks and the only way it can fail is if the underlying transport layer refuses to send a message to the specified address (i.e. no interface accepts the address).
 ---
----@param datagram string
+---@param datagram Datagram
 ---@param ip string
 ---@param port number
 ---
----@return number?, string error
+---@return SocketReturnResult, SocketReturnError
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_unconnected:sendto(datagram, ip, port) end
 
@@ -866,6 +865,7 @@ function udp_unconnected:sendto(datagram, ip, port) end
 ---@param option UDPOption
 ---@param value any?
 ---
+---@return SocketReturnResult, SocketReturnError
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_generic:setoption(option, value) end
 
@@ -888,7 +888,7 @@ function udp_generic:setoption(option, value) end
 ---@param address string # can be a host name
 ---@param port number
 ---
----@return UDPSocketConnected
+---@return SocketReturnResult, SocketReturnError
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_generic:setpeername(address, port) end
 
@@ -907,7 +907,7 @@ function udp_generic:setpeername(address, port) end
 ---
 ---@param address "*" # will turn it unconnected
 ---
----@return UDPSocketUnconnected
+---@return SocketReturnResult, SocketReturnError
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_generic:setpeername(address) end
 
@@ -920,6 +920,7 @@ function udp_generic:setpeername(address) end
 ---
 ---Note: This method can only be called before any datagram is sent through the UDP object, and only once. Otherwise, the system automatically binds the object to all local interfaces and chooses an ephemeral port as soon as the first datagram is sent. After the local address is set, either automatically by the system or explicitly by setsockname, it cannot be changed.
 ---
+---@return SocketReturnResult, SocketReturnError
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_unconnected:setsockname(address, port) end
 
@@ -943,7 +944,7 @@ function udp_generic:settimeout(timeout) end
 ---
 ---Note: Before the choice between IPv4 and IPv6 happens, the internal socket object is invalid and therefore setoption will fail.
 ---
----@return UDPSocketConnected | UDPSocketUnconnected
+---@return (UDPSocketConnected | UDPSocketUnconnected)?, SocketReturnError
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.udp() end
@@ -953,7 +954,7 @@ function socket.udp() end
 ---
 ---In case of success, a new unconnected UDP object returned. In case of error, nil is returned, followed by an error message.
 ---
----@return UDPSocketConnected | UDPSocketUnconnected
+---@return (UDPSocketConnected | UDPSocketUnconnected)?, SocketReturnError
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.udp4() end
@@ -965,7 +966,7 @@ function socket.udp4() end
 ---
 ---Note: The TCP object returned will have the option "ipv6-v6only" set to true.
 ---
----@return UDPSocketConnected | UDPSocketUnconnected
+---@return (UDPSocketConnected | UDPSocketUnconnected)?, SocketReturnError
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.udp6() end
