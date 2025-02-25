@@ -708,16 +708,6 @@ function socket.tcp6() end
 --{{{ UDP
 --#region UDP
 
----
----😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
----@alias Datagram string
-
----
----😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
----@alias inetFamily
----| "inet" IPv4
----| "inet6" IPv6
-
 --> Generic is my way to avoid stating the same thing twice.
 --> Means that both connected and unconnected have it.
 
