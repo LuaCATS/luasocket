@@ -743,6 +743,7 @@ local udp_unconnected = {}
 function udp_generic:close() end
 
 ---
+---The option descriptions come from the official documentation, which come from the man pages.
 ---@alias UDPOption
 ---| 'dontroute': Indicates that outgoing messages should bypass the standard routing facilities. Receives a boolean value;
 ---| 'broadcast': Requests permission to send broadcast datagrams on the socket. Receives a boolean value;
@@ -871,8 +872,6 @@ function udp_unconnected:sendto(datagram, ip, port) end
 ---Option is a string with the option name, and value depends on the option being set
 ---
 ---The method returns 1 in case of success, or nil followed by an error message otherwise.
----
----Note: The descriptions above come from the official documentation, which come from the man pages.
 ---
 ---@param option UDPOption
 ---@param value any?
