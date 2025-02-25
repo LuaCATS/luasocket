@@ -305,6 +305,36 @@ function socket.try(...) end
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 socket._VERSION = ""
 
+---{{{ Common Types
+--#region Common Types
+
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
+---@alias Datagram string
+
+--> Note: In some functions, there could be more results than just a 1,
+-->       but the documentation has no information as to what each of them are.
+-->       Check: https://github.com/lunarmodules/luasocket/blob/master/src/udp.c#L253
+-->       Sometimes its 1 and 2, others up to 3.
+
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
+---@alias SocketReturnResult 1? # Returns 1 on success
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
+---@alias SocketReturnError string? # If operation fails, returns an error message
+
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
+---@alias SocketFamily
+---| "inet" IPv4
+---| "inet6" IPv6
+---| "unspec" Unspecified
+---| "unknown" Unknown
+
+--#endregion Common Types
+---}}}
+
 --{{{ TCP
 --#region TCP
 
@@ -434,13 +464,6 @@ function tcp_client:getoption(option) end
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_server:getoption(option) end
-
----😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
----@alias SocketFamily
----| "inet" IPv4
----| "inet6" IPv6
----| "unspec" Unspecified
----| "unknown" Unknown
 
 ---
 ---Returns information about the remote side of a connected client object.
