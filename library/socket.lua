@@ -955,6 +955,16 @@ function udp_generic:settimeout(timeout) end
 ---
 ---Note: Before the choice between IPv4 and IPv6 happens, the internal socket object is invalid and therefore setoption will fail.
 ---
+---### To mark a socket as connected or unconnected use `---@cast`. Example:
+---```lua
+---local server, err = socket.udp()
+---local client, err = socket.udp()
+------@cast server UDPSocketUnconnected
+---server:setsockname("127.0.0.1", 12345)
+------@cast client UDPSocketConnected
+---client:setpeername("127.0.0.1", 12345)
+---```
+---
 ---@return (UDPSocketConnected | UDPSocketUnconnected)?, SocketReturnError
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
@@ -964,6 +974,16 @@ function socket.udp() end
 ---Creates and returns an unconnected IPv4 UDP object. Unconnected objects support the sendto, receive, receivefrom, getoption, getsockname, setoption, settimeout, setpeername, setsockname, and close. The setpeername is used to connect the object.
 ---
 ---In case of success, a new unconnected UDP object returned. In case of error, nil is returned, followed by an error message.
+---
+---### To mark a socket as connected or unconnected use `---@cast`. Example:
+---```lua
+---local server, err = socket.udp4()
+---local client, err = socket.udp4()
+------@cast server UDPSocketUnconnected
+---server:setsockname("127.0.0.1", 12345)
+------@cast client UDPSocketConnected
+---client:setpeername("127.0.0.1", 12345)
+---```
 ---
 ---@return (UDPSocketConnected | UDPSocketUnconnected)?, SocketReturnError
 ---
@@ -976,6 +996,16 @@ function socket.udp4() end
 ---In case of success, a new unconnected UDP object returned. In case of error, nil is returned, followed by an error message.
 ---
 ---Note: The UDP object returned will have the option "ipv6-v6only" set to true.
+---
+---### To mark a socket as connected or unconnected use `---@cast`. Example:
+---```lua
+---local server, err = socket.udp6()
+---local client, err = socket.udp6()
+------@cast server UDPSocketUnconnected
+---server:setsockname("127.0.0.1", 12345)
+------@cast client UDPSocketConnected
+---client:setpeername("127.0.0.1", 12345)
+---```
 ---
 ---@return (UDPSocketConnected | UDPSocketUnconnected)?, SocketReturnError
 ---
