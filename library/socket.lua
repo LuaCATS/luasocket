@@ -934,7 +934,7 @@ function udp_generic:setpeername(address) end
 ---
 ---@return SocketReturnResult, SocketReturnError
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
-function udp_unconnected:setsockname(address, port) end
+function udp_generic:setsockname(address, port) end
 
 ---
 ---Sets the timeout value for the socket
