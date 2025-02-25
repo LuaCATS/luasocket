@@ -748,7 +748,7 @@ function udp_generic:close() end
 ---| 'ip-drop-membership': Leaves the multicast group specified. Receives a table with fields multiaddr and interface, each containing an IP address.
 
 ---
----Gets an option value from the UDP object. See `setoption` for description of the option names and values.
+---Gets an option value from the UDP object.
 ---
 ---Option is a string with the option name.
 ---
@@ -760,6 +760,10 @@ function udp_generic:close() end
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_generic:getoption(option) end
+
+--> Note: This is not very satisfying, since one could check
+-->       if the first argument is nil. But LuaLS will want to
+-->       check the rest of the arguments anyway.
 
 ---
 ---Retrieves information about the peer associated with a connected UDP object.
@@ -964,7 +968,7 @@ function socket.udp4() end
 ---
 ---In case of success, a new unconnected UDP object returned. In case of error, nil is returned, followed by an error message.
 ---
----Note: The TCP object returned will have the option "ipv6-v6only" set to true.
+---Note: The UDP object returned will have the option "ipv6-v6only" set to true.
 ---
 ---@return (UDPSocketConnected | UDPSocketUnconnected)?, SocketReturnError
 ---
