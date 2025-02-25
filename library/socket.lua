@@ -930,7 +930,7 @@ function udp_generic:settimeout(timeout) end
 ---
 ---Note: Before the choice between IPv4 and IPv6 happens, the internal socket object is invalid and therefore setoption will fail.
 ---
----@return UDPSocketGeneric
+---@return UDPSocketConnected | UDPSocketUnconnected
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.udp() end
@@ -940,7 +940,7 @@ function socket.udp() end
 ---
 ---In case of success, a new unconnected UDP object returned. In case of error, nil is returned, followed by an error message.
 ---
----@return UDPSocketGeneric
+---@return UDPSocketConnected | UDPSocketUnconnected
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.udp4() end
@@ -952,7 +952,7 @@ function socket.udp4() end
 ---
 ---Note: The TCP object returned will have the option "ipv6-v6only" set to true.
 ---
----@return UDPSocketGeneric
+---@return UDPSocketConnected | UDPSocketUnconnected
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.udp6() end
