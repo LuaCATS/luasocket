@@ -299,6 +299,7 @@ function socket.try(...) end
 
 ---
 ---This constant has a string describing the current LuaSocket version.
+---
 ---@type string
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
@@ -308,14 +309,17 @@ socket._VERSION = ""
 --#region TCP
 
 ---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 ---@class TCPSocketMaster
 local tcp_master = {}
 
 ---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 ---@class TCPSocketServer : TCPSocketMaster
 local tcp_server = {}
 
 ---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 ---@class TCPSocketClient : TCPSocketMaster
 local tcp_client = {}
 
@@ -327,6 +331,8 @@ local tcp_client = {}
 ---Note: calling `socket.select` with a server object in the recvt parameter before a call to accept does not guarantee accept will return immediately. Use the `settimeout` method or accept might block until another client shows up.
 ---
 ---@return TCPSocketClient | nil, "timeout" | string
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_server:accept() end
 
 ---
@@ -342,7 +348,10 @@ function tcp_server:accept() end
 ---
 ---@param address string
 ---@param port integer
+---
 ---@return 1|nil, nil|string
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_master:bind(address, port) end
 
 ---
@@ -353,6 +362,7 @@ function tcp_master:bind(address, port) end
 ---Note: It is important to close all used sockets once they are not needed, since, in many systems,
 ---each socket uses a file descriptor, which are limited system resources.
 ---Garbage-collected objects are automatically closed before destruction, though.
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_master:close() end
 
 ---
@@ -367,23 +377,33 @@ function tcp_master:close() end
 ---
 ---@param address string # IP address or a host name
 ---@param port integer # TCP port, in the range [1..64K)
+---
 ---@return nil | 1, nil | string # In case of error, the method returns nil followed by a string describing the error. In case of success, the method returns 1.
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_master:connect(address, port) end
 
 ---
 ---Check the read buffer status.
 ---
 ---**Note: This is an internal method, use at your own risk.**
+---
 ---@return boolean # `true` if there is any data in the read buffer, `false` otherwise.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_master:dirty() end
 
 ---
 ---Get the underling socket descriptor or handle associated to the object.
 ---
 ---**Note: This is an internal method. Unlikely to be portable. use at your own risk.**
+---
 ---@return integer # The descriptor or handle. `-1` if the object has been closed. `_SOCKETINVALID` if it is an invalid socket.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_master:getfd() end
 
+
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 ---@alias TCPOption
 ---| "keepalive" Setting this option to `true` enables the periodic transmission of messages on a connected socket. Should the connected party fail to respond to these messages, the connection is considered broken and processes using the socket are notified;
 ---| "linger" Controls the action taken when unsent data are queued on a socket and a close is performed. The value is a table with a boolean entry `on` and a numeric entry for the time interval `timeout` in seconds. If the `on` field is set to `true`, the system will block the process on the close attempt until it is able to transmit the data or until `timeout` has passed. If `on` is `false` and a `close` is issued, the system will process the `close` in a manner that allows the process to continue as quickly as possible. I do not advise you to set this to anything other than zero;
@@ -401,15 +421,22 @@ function tcp_master:getfd() end
 ---
 ---Gets options for the TCP object. See `setoption` for description of the option names and values.
 ---@param option TCPOption
+---
 ---@return any | nil, nil | string # The option value in case of success, or nil followed by an error message otherwise.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_client:getoption(option) end
 
 ---
 ---Gets options for the TCP object. See `setoption` for description of the option names and values.
 ---@param option TCPOption
+---
 ---@return any | nil, nil | string # The option value in case of success, or nil followed by an error message otherwise.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_server:getoption(option) end
 
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 ---@alias SocketFamily
 ---| "inet" IPv4
 ---| "inet6" IPv6
@@ -423,18 +450,23 @@ function tcp_server:getoption(option) end
 ---
 ---@return string | nil, integer | nil, SocketFamily | nil # The IP address of the peer, the port number that the peer is using for the connection, and the family. In case of error, returns `nil`.
 ---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_client:getpeername() end
 
 ---
 ---Returns the local address information associated to the object.
 ---
 ---@return string | nil, integer | nil, SocketFamily | nil # The IP address of the peer, the port number that the peer is using for the connection, and the family. In case of error, returns `nil`.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_master:getsockname() end
 
 ---
 ---Returns the current block timeout followed by the current total timeout.
 ---
 ---@return number, number # Current block timeout, current total timeout.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_master:gettimeout() end
 
 ---
@@ -446,6 +478,7 @@ function tcp_master:gettimeout() end
 ---
 ---@return 1 | nil, nil | string # Returns 1 on success, nil and an error on failure.
 ---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_master:listen(backlog) end
 
 ---@alias SocketError
@@ -469,6 +502,8 @@ function tcp_master:listen(backlog) end
 ---@param prefix? string Optional string to be concatenated to the beginning of any received data before return.
 ---
 ---@return string | nil, SocketError | string | nil # Returns the received pattern when successful, otherwise nil and an error message.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_client:receive(pattern, prefix) end
 
 ---
@@ -481,7 +516,10 @@ function tcp_client:receive(pattern, prefix) end
 ---@param data string The string to be sent.
 ---@param i? integer
 ---@param j? integer
+---
 ---@return integer | nil, SocketError | string | nil, integer | nil # On success the number of bytes sent, otherwise nil followed by an error message, followed by the index of the last byte within `[i, j]` that has been sent. You might want to try again from the byte following that.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_client:send(data, i, j) end
 
 ---
@@ -497,7 +535,10 @@ function tcp_client:setoption(option, value) end
 ---
 ---@param option TCPOption A string with the option name
 ---@param value? any Depends on the option being set
+---
 ---@return 1 | nil, string | nil # 1 on success, nil and an error message otherwise.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_server:setoption(option, value) end
 
 ---
@@ -507,6 +548,7 @@ function tcp_server:setoption(option, value) end
 ---@param sent number Byte sent
 ---@param age number Age in seconds
 ---@return 1 | nil # 1 on success, nil otherwise.
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_master:setstats(received, sent, age) end
 
 ---@alias TCPTimeoutMode
@@ -522,6 +564,8 @@ function tcp_master:setstats(received, sent, age) end
 ---
 ---@param value number | nil Time to wait, in seconds. Use `nil` or negative to block indefinitely.
 ---@param mode? TCPTimeoutMode The default mode is "b"
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_master:settimeout(value, mode) end
 
 ---@alias TCPShutdownMode
@@ -532,7 +576,10 @@ function tcp_master:settimeout(value, mode) end
 ---
 ---Shuts down part of a full-duplex connection.
 ---@param mode TCPShutdownMode Determines which way of the connection should be shut down.
+---
 ---@return 1 # Always returns 1.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_client:shutdown(mode) end
 
 ---
@@ -541,6 +588,8 @@ function tcp_client:shutdown(mode) end
 ---**Note: This is an internal method. Unlikely to be portable. Use at your own risk.**
 ---
 ---@param fd integer
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function tcp_master:setfd(fd) end
 
 -- The following are in the socket namespace --
@@ -553,6 +602,7 @@ function tcp_master:setfd(fd) end
 ---@param address string
 ---@param port integer
 ---@param backlog? integer Defaults to 32.
+---
 ---@return TCPSocketServer
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
@@ -568,7 +618,9 @@ function socket.bind(address, port, backlog) end
 ---@param locaddr? string The local address
 ---@param locport? integer The local port
 ---@param family? 'inet'|'inet6' If not specified, the family depends on your system configuration.
+---
 ---@return TCPSocketClient | nil, nil | string # Returns the client on success, or `nil` and an error message on failure.
+---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.connect(address, port, locaddr, locport, family) end
 
@@ -581,6 +633,7 @@ function socket.connect(address, port, locaddr, locport, family) end
 ---@param locport? integer The local port
 ---
 ---@return TCPSocketClient | nil, nil | string # Returns the client on success, or `nil` and an error message on failure.
+---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.connect4(address, port, locaddr, locport) end
 
@@ -593,6 +646,7 @@ function socket.connect4(address, port, locaddr, locport) end
 ---@param locport? integer The local port
 ---
 ---@return TCPSocketClient | nil, nil | string # Returns the client on success, or `nil` and an error message on failure.
+---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.connect6(address, port, locaddr, locport) end
 
@@ -604,12 +658,16 @@ function socket.connect6(address, port, locaddr, locport) end
 ---Note: Before the choice between IPv4 and IPv6 happens, the internal socket object is invalid and therefore `setoption` will fail.
 ---
 ---@return TCPSocketMaster | nil, nil | string # New master object if successful, otherwise `nil` followed by an error message.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.tcp() end
 
 ---
 ---Creates and returns an IPv4 TCP master object. A master object can be transformed into a server object with the method `listen` (after a call to `bind`) or into a client object with the method connect. The only other method supported by a master object is the `close` method.
 ---
 ---@return TCPSocketMaster | nil, nil | string # New master object if successful, otherwise `nil` followed by an error message.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.tcp4() end
 
 ---
@@ -618,6 +676,8 @@ function socket.tcp4() end
 ---Note: The TCP object returned will have the option "ipv6-v6only" set to `true`.
 ---
 ---@return TCPSocketMaster | nil, nil | string # New master object if successful, otherwise `nil` followed by an error message.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.tcp6() end
 
 --#endregion
@@ -626,7 +686,12 @@ function socket.tcp6() end
 --{{{ UDP
 --#region UDP
 
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 ---@alias Datagram string
+
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 ---@alias inetFamily
 ---| "inet" IPv4
 ---| "inet6" IPv6
@@ -634,20 +699,30 @@ function socket.tcp6() end
 --> Generic is my way to avoid stating the same thing twice.
 --> Means that both connected and unconnected have it.
 
+---
 ---@class UDPSocketGeneric
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 local udp_generic = {}
 
+---
 ---@class UDPSocketConnected : UDPSocketGeneric
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 local udp_connected = {}
 
+---
 ---@class UDPSocketUnconnected : UDPSocketGeneric
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 local udp_unconnected = {}
 
+---
 ---Closes a UDP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.
 ---
 ---Note: It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_generic:close() end
 
+---
 ---@alias UDPOption
 ---| 'dontroute': Indicates that outgoing messages should bypass the standard routing facilities. Receives a boolean value;
 ---| 'broadcast': Requests permission to send broadcast datagrams on the socket. Receives a boolean value;
@@ -660,35 +735,53 @@ function udp_generic:close() end
 ---| 'ip-add-membership': Joins the multicast group specified. Receives a table with fields multiaddr and interface, each containing an IP address;
 ---| 'ip-drop-membership': Leaves the multicast group specified. Receives a table with fields multiaddr and interface, each containing an IP address.
 
+---
 ---Gets an option value from the UDP object. See `setoption` for description of the option names and values.
 ---
 ---Option is a string with the option name.
 ---
 ---The method returns the option value in case of success, or nil followed by an error message otherwise.
+---
 ---@param option UDPOption
+---
 ---@return any | nil, nil | string
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_generic:getoption(option) end
 
+---
 ---Retrieves information about the peer associated with a connected UDP object.
 ---
 ---Returns a string with the IP address of the peer, the port number that peer is using for the connection, and a string with the family ("inet" or "inet6"). In case of error, the method returns nil.
 ---
 ---Note: It makes no sense to call this method on unconnected objects.
+---
 ---@return string, number, inetFamily
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_connected:getpeername() end
 
+---
 ---Returns the local address information associated to the object.
 ---
 ---The method returns a string with local IP address, a number with the local port, and a string with the family ("inet" or "inet6"). In case of error, the method returns nil.
 ---
 ---Note: UDP sockets are not bound to any address until the `setsockname` or the `sendto` method is called for the first time (in which case it is bound to an ephemeral port and the wild-card address).
+---
 ---@return string, number, inetFamily
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_generic:getsockname() end
 
+---
 ---Returns the current timeout value.
+---
 ---@return number timeout
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_generic:gettimeout() end
 
+---
 ---Receives a datagram from the UDP object. If the UDP object is connected, only datagrams coming from the peer are accepted. Otherwise, the returned datagram can come from any host.
 ---
 ---The optional size parameter specifies the maximum size of the datagram to be retrieved. If there are more than size bytes available in the datagram, the excess bytes are **discarded**.
@@ -698,18 +791,27 @@ function udp_generic:gettimeout() end
 ---In case of success, the method returns the received datagram. In case of timeout, the method returns nil followed by the string `'timeout'`.
 ---
 ---Note: don't call this from unconnected sockets. Since you wont be able to know where it came from. Use `receivefrom` instead.
+---
 ---@param size number?
+---
 ---@return string? datagram
+---
 ---@return 'timeout'? err # `'timeout'` in case of timeout
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_generic:receive(size) end
 
 ---Works exactly as the `receive` method, except it returns the IP address and port as extra return values (and is therefore slightly less efficient)
 ---@param size number?
+---
 ---@return string? datagram
 ---@return string | 'timeout' ip_or_err # IP address or `'timeout'` error string
 ---@return number port
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_unconnected:receivefrom(size) end
 
+---
 ---Sends a datagram to the UDP peer of a connected object.
 ---
 ---Datagram is a string with the datagram contents. The maximum datagram size for UDP is 64K minus IP layer overhead. However datagrams larger than the link layer packet size will be fragmented, which may deteriorate performance and/or reliability.
@@ -718,9 +820,12 @@ function udp_unconnected:receivefrom(size) end
 ---
 ---Note: In UDP, the send method never blocks and the only way it can fail is if the underlying transport layer refuses to send a message to the specified address (i.e. no interface accepts the address).
 ---@param datagram string
+---
 ---@return number?, string error
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_connected:send(datagram) end
 
+---
 ---Sends a datagram to the specified IP address and port number.
 ---
 ---Datagram is a string with the datagram contents. The maximum datagram size for UDP is 64K minus IP layer overhead. However datagrams larger than the link layer packet size will be fragmented, which may deteriorate performance and/or reliability. Ip is the IP address of the recipient. Host names are not allowed for performance reasons. Port is the port number at the recipient.
@@ -728,12 +833,16 @@ function udp_connected:send(datagram) end
 ---If successful, the method returns 1. In case of error, the method returns nil followed by an error message.
 ---
 ---Note: In UDP, the send method never blocks and the only way it can fail is if the underlying transport layer refuses to send a message to the specified address (i.e. no interface accepts the address).
+---
 ---@param datagram string
 ---@param ip string
 ---@param port number
+---
 ---@return number?, string error
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_unconnected:sendto(datagram, ip, port) end
 
+---
 ---Sets options for the UDP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.
 ---
 ---Option is a string with the option name, and value depends on the option being set
@@ -741,13 +850,17 @@ function udp_unconnected:sendto(datagram, ip, port) end
 ---The method returns 1 in case of success, or nil followed by an error message otherwise.
 ---
 ---Note: The descriptions above come from the official documentation, which come from the man pages.
+---
 ---@param option UDPOption
 ---@param value any?
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_generic:setoption(option, value) end
 
 --> `setpeername` sets the peer for an unconnected socket
 --> when it's connected, only a `'*'` can be set. Which will make it unconnected again
 
+---
 ---Changes the peer of a UDP object. This method turns an unconnected UDP object into a connected UDP object or vice versa.
 ---
 ---For connected objects, outgoing datagrams will be sent to the specified peer, and datagrams received from other peers will be discarded by the OS. Connected UDP objects must use the send and receive methods instead of sendto and receivefrom.
@@ -759,10 +872,15 @@ function udp_generic:setoption(option, value) end
 ---Note: Since the address of the peer does not have to be passed to and from the OS, the use of connected UDP objects is recommended when the same peer is used for several transmissions and can result in up to 30% performance gains.
 ---
 ---Note: Starting with LuaSocket 3.0, the host name resolution depends on whether the socket was created by socket.udp or socket.udp6. Addresses from the appropriate family are tried in succession until the first success or until the last failure.
+---
 ---@param address string # can be a host name
 ---@param port number
+---
 ---@return UDPSocketConnected
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_unconnected:setpeername(address, port) end
+
+---
 ---Changes the peer of a UDP object. This method turns an unconnected UDP object into a connected UDP object or vice versa.
 ---
 ---For connected objects, outgoing datagrams will be sent to the specified peer, and datagrams received from other peers will be discarded by the OS. Connected UDP objects must use the send and receive methods instead of sendto and receivefrom.
@@ -774,10 +892,14 @@ function udp_unconnected:setpeername(address, port) end
 ---Note: Since the address of the peer does not have to be passed to and from the OS, the use of connected UDP objects is recommended when the same peer is used for several transmissions and can result in up to 30% performance gains.
 ---
 ---Note: Starting with LuaSocket 3.0, the host name resolution depends on whether the socket was created by socket.udp or socket.udp6. Addresses from the appropriate family are tried in succession until the first success or until the last failure.
+---
 ---@param address "*" # will turn it unconnected
+---
 ---@return UDPSocketUnconnected
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_connected:setpeername(address) end
 
+---
 ---Binds the UDP object to a local address.
 ---
 ---Address can be an IP address or a host name. If address is '*' the system binds to all local interfaces using the constant INADDR_ANY. If port is 0, the system chooses an ephemeral port.
@@ -785,15 +907,22 @@ function udp_connected:setpeername(address) end
 ---If successful, the method returns 1. In case of error, the method returns nil followed by an error message.
 ---
 ---Note: This method can only be called before any datagram is sent through the UDP object, and only once. Otherwise, the system automatically binds the object to all local interfaces and chooses an ephemeral port as soon as the first datagram is sent. After the local address is set, either automatically by the system or explicitly by setsockname, it cannot be changed.
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_unconnected:setsockname(address, port) end
 
+---
 ---Sets the timeout value for the socket
 ---
 ---Sets the time to blocks the process when calling `receive` and `receivefrom`
 ---until the timeout is reached or a packet arrives.
+---
 ---@param timeout number
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function udp_generic:settimeout(timeout) end
 
+---
 ---Creates and returns an unconnected UDP object. Unconnected objects support the sendto, receive, receivefrom, getoption, getsockname, setoption, settimeout, setpeername, setsockname, and close. The setpeername is used to connect the object.
 ---
 ---In case of success, a new unconnected UDP object returned. In case of error, nil is returned, followed by an error message.
@@ -801,21 +930,32 @@ function udp_generic:settimeout(timeout) end
 ---Note: The choice between IPv4 and IPv6 happens during a call to sendto, setpeername, or sockname, depending on the address family obtained from the resolver.
 ---
 ---Note: Before the choice between IPv4 and IPv6 happens, the internal socket object is invalid and therefore setoption will fail.
+---
 ---@return UDPSocketGeneric
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.udp() end
 
+---
 ---Creates and returns an unconnected IPv4 UDP object. Unconnected objects support the sendto, receive, receivefrom, getoption, getsockname, setoption, settimeout, setpeername, setsockname, and close. The setpeername is used to connect the object.
 ---
 ---In case of success, a new unconnected UDP object returned. In case of error, nil is returned, followed by an error message.
+---
 ---@return UDPSocketGeneric
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.udp4() end
 
+---
 ---Creates and returns an unconnected IPv6 UDP object. Unconnected objects support the sendto,
 ---
 ---In case of success, a new unconnected UDP object returned. In case of error, nil is returned, followed by an error message.
 ---
 ---Note: The TCP object returned will have the option "ipv6-v6only" set to true.
+---
 ---@return UDPSocketGeneric
+---
+---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.udp6() end
 
 --#endregion
