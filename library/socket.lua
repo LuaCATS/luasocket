@@ -331,9 +331,6 @@ function socket.try(...) end
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 socket._VERSION = ""
 
----{{{ Common Types
---#region Common Types
-
 ---A string representing a datagram
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
@@ -365,12 +362,6 @@ socket._VERSION = ""
 ---| "inet6" IPv6
 ---| "unspec" Unspecified
 ---| "unknown" Unknown
-
---#endregion Common Types
----}}}
-
---{{{ TCP
---#region TCP
 
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
@@ -736,11 +727,6 @@ function socket.tcp4() end
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.tcp6() end
 
---#endregion
---}}}
-
---{{{ UDP
---#region UDP
 
 --> Generic is my way to avoid stating the same thing twice.
 --> Means that both connected and unconnected have it.
@@ -1037,8 +1023,5 @@ function socket.udp4() end
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 function socket.udp6() end
-
---#endregion
---}}}
 
 return socket
