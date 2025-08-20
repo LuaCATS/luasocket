@@ -57,7 +57,6 @@ socket.headers = {}
 ---capitalization. When a lowercase field name exists as a key
 ---in this table, the associated value is substituted in
 ---whenever the field name is sent out.
----```
 ---
 ---😱 [Types](https://github.com/LuaCATS/luasocket/blob/main/library/socket.lua) incomplete or incorrect? 🙏 [Please contribute!](https://github.com/LuaCATS/luasocket/pulls)
 socket.headers.canonic = {}
@@ -109,7 +108,7 @@ function socket.gettime() end
 ---Creates and returns a clean
 ---`try`
 ---function that allows for cleanup before the exception
----is  raised.
+---is raised.
 ---
 ---Note: This idea saved a lotof work with the
 ---implementation of protocols in LuaSocket:
@@ -894,11 +893,15 @@ function udp_connected:send(datagram) end
 function udp_unconnected:sendto(datagram, ip, port) end
 
 ---
----Sets options for the UDP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.
+---Sets options for the UDP object. Options are only needed by low-level or
+---time-critical applications. You should only modify an option if you are sure
+---you need it.
 ---
----Option is a string with the option name, and value depends on the option being set
+---Option is a string with the option name, and value depends on the option
+---being set
 ---
----The method returns 1 in case of success, or nil followed by an error message otherwise.
+---The method returns 1 in case of success, or nil followed by an error message
+---otherwise.
 ---
 ---@param option UDPOption
 ---@param value any?
@@ -912,17 +915,30 @@ function udp_generic:setoption(option, value) end
 --> when it's connected, only a `'*'` can be set. Which will make it unconnected again
 
 ---
----Changes the peer of a UDP object. This method turns an unconnected UDP object into a connected UDP object or vice versa.
+---Changes the peer of a UDP object. This method turns an unconnected UDP object
+---into a connected UDP object or vice versa.
 ---
----For connected objects, outgoing datagrams will be sent to the specified peer, and datagrams received from other peers will be discarded by the OS. Connected UDP objects must use the send and receive methods instead of sendto and receivefrom.
+---For connected objects, outgoing datagrams will be sent to the specified peer,
+---and datagrams received from other peers will be discarded by the OS.
+---Connected UDP objects must use the send and receive methods instead of sendto
+---and receivefrom.
 ---
----Address can be an IP address or a host name. Port is the port number. If address is '*' and the object is connected, the peer association is removed and the object becomes an unconnected object again. In that case, the port argument is ignored.
+---Address can be an IP address or a host name. Port is the port number. If
+---address is '*' and the object is connected, the peer association is removed
+---and the object becomes an unconnected object again. In that case, the port
+---argument is ignored.
 ---
----In case of error the method returns nil followed by an error message. In case of success, the method returns 1.
+---In case of error the method returns nil followed by an error message. In case
+---of success, the method returns 1.
 ---
----Note: Since the address of the peer does not have to be passed to and from the OS, the use of connected UDP objects is recommended when the same peer is used for several transmissions and can result in up to 30% performance gains.
+---Note: Since the address of the peer does not have to be passed to and from
+---the OS, the use of connected UDP objects is recommended when the same peer is
+---used for several transmissions and can result in up to 30% performance gains.
 ---
----Note: Starting with LuaSocket 3.0, the host name resolution depends on whether the socket was created by socket.udp or socket.udp6. Addresses from the appropriate family are tried in succession until the first success or until the last failure.
+---Note: Starting with LuaSocket 3.0, the host name resolution depends on
+---whether the socket was created by socket.udp or socket.udp6. Addresses from
+---the appropriate family are tried in succession until the first success or
+---until the last failure.
 ---
 ---@param address string # can be a host name
 ---@param port number
@@ -933,17 +949,30 @@ function udp_generic:setoption(option, value) end
 function udp_generic:setpeername(address, port) end
 
 ---
----Changes the peer of a UDP object. This method turns an unconnected UDP object into a connected UDP object or vice versa.
+---Changes the peer of a UDP object. This method turns an unconnected UDP object
+---into a connected UDP object or vice versa.
 ---
----For connected objects, outgoing datagrams will be sent to the specified peer, and datagrams received from other peers will be discarded by the OS. Connected UDP objects must use the send and receive methods instead of sendto and receivefrom.
+---For connected objects, outgoing datagrams will be sent to the specified peer,
+---and datagrams received from other peers will be discarded by the OS.
+---Connected UDP objects must use the send and receive methods instead of sendto
+---and receivefrom.
 ---
----Address can be an IP address or a host name. Port is the port number. If address is '*' and the object is connected, the peer association is removed and the object becomes an unconnected object again. In that case, the port argument is ignored.
+---Address can be an IP address or a host name. Port is the port number. If
+---address is '*' and the object is connected, the peer association is removed
+---and the object becomes an unconnected object again. In that case, the port
+---argument is ignored.
 ---
----In case of error the method returns nil followed by an error message. In case of success, the method returns 1.
+---In case of error the method returns nil followed by an error message. In case
+---of success, the method returns 1.
 ---
----Note: Since the address of the peer does not have to be passed to and from the OS, the use of connected UDP objects is recommended when the same peer is used for several transmissions and can result in up to 30% performance gains.
+---Note: Since the address of the peer does not have to be passed to and from
+---the OS, the use of connected UDP objects is recommended when the same peer is
+---used for several transmissions and can result in up to 30% performance gains.
 ---
----Note: Starting with LuaSocket 3.0, the host name resolution depends on whether the socket was created by socket.udp or socket.udp6. Addresses from the appropriate family are tried in succession until the first success or until the last failure.
+---Note: Starting with LuaSocket 3.0, the host name resolution depends on
+---whether the socket was created by socket.udp or socket.udp6. Addresses from
+---the appropriate family are tried in succession until the first success or
+---until the last failure.
 ---
 ---@param address "*" # will turn it unconnected
 ---
@@ -955,11 +984,18 @@ function udp_generic:setpeername(address) end
 ---
 ---Binds the UDP object to a local address.
 ---
----Address can be an IP address or a host name. If address is '*' the system binds to all local interfaces using the constant INADDR_ANY. If port is 0, the system chooses an ephemeral port.
+---Address can be an IP address or a host name. If address is '*' the system
+---binds to all local interfaces using the constant INADDR_ANY. If port is 0,
+---the system chooses an ephemeral port.
 ---
----If successful, the method returns 1. In case of error, the method returns nil followed by an error message.
+---If successful, the method returns 1. In case of error, the method returns nil
+---followed by an error message.
 ---
----Note: This method can only be called before any datagram is sent through the UDP object, and only once. Otherwise, the system automatically binds the object to all local interfaces and chooses an ephemeral port as soon as the first datagram is sent. After the local address is set, either automatically by the system or explicitly by setsockname, it cannot be changed.
+---Note: This method can only be called before any datagram is sent through the
+---UDP object, and only once. Otherwise, the system automatically binds the
+---object to all local interfaces and chooses an ephemeral port as soon as the
+---first datagram is sent. After the local address is set, either automatically
+---by the system or explicitly by setsockname, it cannot be changed.
 ---
 ---@return SocketReturnResult, SocketReturnError
 ---
@@ -978,13 +1014,20 @@ function udp_generic:setsockname(address, port) end
 function udp_generic:settimeout(timeout) end
 
 ---
----Creates and returns an unconnected UDP object. Unconnected objects support the sendto, receive, receivefrom, getoption, getsockname, setoption, settimeout, setpeername, setsockname, and close. The setpeername is used to connect the object.
+---Creates and returns an unconnected UDP object. Unconnected objects support
+---the sendto, receive, receivefrom, getoption, getsockname, setoption,
+---settimeout, setpeername, setsockname, and close. The setpeername is used to
+---connect the object.
 ---
----In case of success, a new unconnected UDP object returned. In case of error, nil is returned, followed by an error message.
+---In case of success, a new unconnected UDP object returned. In case of error,
+---nil is returned, followed by an error message.
 ---
----Note: The choice between IPv4 and IPv6 happens during a call to sendto, setpeername, or sockname, depending on the address family obtained from the resolver.
+---Note: The choice between IPv4 and IPv6 happens during a call to sendto,
+---setpeername, or sockname, depending on the address family obtained from the
+---resolver.
 ---
----Note: Before the choice between IPv4 and IPv6 happens, the internal socket object is invalid and therefore setoption will fail.
+---Note: Before the choice between IPv4 and IPv6 happens, the internal socket
+---object is invalid and therefore setoption will fail.
 ---
 ---__Example__:
 ---
@@ -1005,9 +1048,13 @@ function udp_generic:settimeout(timeout) end
 function socket.udp() end
 
 ---
----Creates and returns an unconnected IPv4 UDP object. Unconnected objects support the sendto, receive, receivefrom, getoption, getsockname, setoption, settimeout, setpeername, setsockname, and close. The setpeername is used to connect the object.
+---Creates and returns an unconnected IPv4 UDP object. Unconnected objects
+---support the sendto, receive, receivefrom, getoption, getsockname, setoption,
+---settimeout, setpeername, setsockname, and close. The setpeername is used to
+---connect the object.
 ---
----In case of success, a new unconnected UDP object returned. In case of error, nil is returned, followed by an error message.
+---In case of success, a new unconnected UDP object returned. In case of error,
+---nil is returned, followed by an error message.
 ---
 ---__Example__:
 ---
@@ -1028,9 +1075,11 @@ function socket.udp() end
 function socket.udp4() end
 
 ---
----Creates and returns an unconnected IPv6 UDP object. Unconnected objects support the sendto,
+---Creates and returns an unconnected IPv6 UDP object. Unconnected objects
+---support the sendto,
 ---
----In case of success, a new unconnected UDP object returned. In case of error, nil is returned, followed by an error message.
+---In case of success, a new unconnected UDP object returned. In case of error,
+---nil is returned, followed by an error message.
 ---
 ---Note: The UDP object returned will have the option "ipv6-v6only" set to true.
 ---
